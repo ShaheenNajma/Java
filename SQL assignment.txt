@@ -1,0 +1,85 @@
+1.Describe constraint?
+-->Constraint is the one which resticts invalid data into the table and it is provided to the coloumn of the table.
+
+2.Whats the diff between primary key and foreign key?
+-->Primary key is a coloumn which uniquely identifies a row, itis a combination of not null and constraint , Creation of primary key is not mandatory but 
+recommended
+   Foreign key creates the relationship between 2 tables and it can accept null duplicate values .It is also called as refrential  integrity contraint, It is created in 
+child  table.
+
+3.Explain foreign key with an example?
+--> Foreign key creates the relationship between 2 tables and it can accept null duplicate values .It is also called as refrential  integrity contraint, It is created in
+     child  table.
+
+4.What are the capabilities of select statement?
+--> Projection
+     Selection
+     Joins
+
+5.What are alias? 
+-->Alias are alternativename for even individual coloumn name, It should be mentioned next to colomn name.
+
+6.Write the syntax for selection?
+ --> Select
+      Expression(Alias...)
+      From (Table name)
+      Where (Column name);
+
+7.Write the presidence of operator?
+-->  Arithmatic operator
+      Concatination operator
+      Comparision operator
+      Is, Like , In
+      Between
+      Not
+      And
+      Or
+
+8.Why do we use distinct keyword?
+--> It is used to return distinct values in a table.
+
+9.Define operators and operand?
+--> Operator is the one which allows you to perform specific operations to the colomns and operand are the input required for the operands that is used to perform 
+operations.
+
+10.What is null ?
+--> Null is nothing. It has unknown value, it can be a blankspace and does not occupy value
+
+11.Describe RDBMS?
+-->RDBMS stands for Relationship database management system
+
+12.Define Management system service?
+--> It manages to retrieve data from the data base.
+
+13.WAQTLAE who don't have commission
+-->    Select *
+        From emp
+        where comm is null;
+
+14.WAQTLAE whose name consists of exactly one A in it
+ -->    Select *
+        From emp
+        where ename like '%A%';
+
+15.WAQTLAE who are working as clerk, salesman, analyst and president in dept 20 & 30
+-->    Select *
+        From emp
+        where job in('CLERK', 'SALESMAN','ANALYST', 'PRESIDENT') and
+        deptno in(20,30);
+
+16.WAQTLAE who joined in the year '81 and working as manager
+-->    Select *
+        From emp
+        where hiredate like '%81';
+
+17.WAQTLAE who are working as salesman and president and earning salary in the range of 3000 to 5000 with no commission and name consists of atleast one N
+-->    Select *
+        From emp
+         sal between 3000 and  5000 and
+         ename like '%N%'  and
+         comm is null;
+
+18.WAQTLAE which consists of two consecutIve CC
+-->    Select *
+        From dept
+        where dname like '%CC%';                                                                                                                                                                                                              i    
