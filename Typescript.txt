@@ -1,0 +1,701 @@
+﻿////////////////////////////////////////TypeScript /////////////////////////////////////////////////// mpd-qvrt-iqu
+
+TypeScript – Overview 
+
+JavaScript was introduced as a language for the client side. The development of Node.js
+has marked JavaScript as an emerging server-side technology too. However, as JavaScript
+code grows, it tends to get messier, making it difficult to maintain and reuse the code.
+Moreover, its failure to embrace the features of Object Orientation, strong type checking
+and compile-time error checks prevents JavaScript from succeeding at the enterprise level
+as a full-fledged server-side technology. TypeScript was presented to bridge this gap.
+
+What is TypeScript?
+
+TypeScript is a strongly typed, object oriented, compiled language. It was designed by
+Anders Hejlsberg (designer of C#) at Microsoft. TypeScript is a typed superset of JavaScript
+compiled to JavaScript. In otherwords, TypeScript is JavaScript plus some additional features.
+
+Features of TypeScript
+
+*TypeScript is just JavaScript. TypeScript starts with JavaScript and ends with
+JavaScript. Typescript adopts the basic building blocks of your program from JavaScript.
+Hence, you only need to know JavaScript to use TypeScript. All TypeScript code is
+converted into its JavaScript equivalent for the purpose of execution.
+
+*TypeScript supports other JS libraries. Compiled TypeScript can be consumed from
+any JavaScript code. TypeScript-generated JavaScript can reuse all of the existing
+JavaScript frameworks, tools, and libraries.
+
+*JavaScript is TypeScript. This means that any valid .js file can be renamed to .ts and
+compiled with other TypeScript files.
+
+*TypeScript is portable. TypeScript is portable across browsers, devices, and operating
+systems. It can run on any environment that JavaScript runs on. Unlike its counterparts,
+TypeScript doesn’t need a dedicated VM or a specific runtime environment to execute.
+
+The benefits of TypeScript include:
+
+ Compilation: JavaScript is an interpreted language. Hence, it needs to be run to
+test that it is valid. It means you write all the codes just to find no output, in case
+there is an error. Hence, you have to spend hours trying to find bugs in the code.
+The TypeScript transpiler provides the error-checking feature. TypeScript will
+compile the code and generate compilation errors, if it finds some sort of syntax
+errors. This helps to highlight errors before the script is run.
+
+ Strong Static Typing: JavaScript is not strongly typed. TypeScript comes with an
+optional static typing and type inference system through the TLS (TypeScript
+Language Service). The type of a variable, declared with no type, may be inferred
+by the TLS based on its value.
+
+ TypeScript supports Object Oriented Programming concepts like classes,
+interfaces, inheritance, etc.
+
+
+////////////////////////////////////TypeScript – Environment Setup/////////////////////////////////// 
+
+In this chapter, we will discuss how to install TypeScript on Windows platform. 
+
+Local Environment Setup
+
+//////A Text Editor
+The text editor helps you to write your source code. Examples of a few editors include
+Windows Notepad, Notepad++, Emacs, vim or vi, etc. Editors used may vary with
+Operating Systems.
+The source files are typically named with the extension .ts
+
+//////The TypeScript Compiler
+The TypeScript compiler is itself a .ts file compiled down to JavaScript (.js) file. The TSC
+(TypeScript Compiler) is a source-to-source compiler 
+
+The TSC generates a JavaScript version of the .ts file passed to it. In other words, the TSC
+produces an equivalent JavaScript source code from the Typescript file given as an input
+to it. This process is termed as transpilation. 
+
+stpe 1:Installing Node.js
+
+Step 2: To verify if the installation was successful, enter the command node –v in the
+terminal window.
+
+Step 3: Type the following command in the terminal window to install TypeScript.
+command: npm install -g typescript
+
+/////////////////////////////////////TypeScript ─ Basic Syntax //////////////////////////////////////////
+
+var message:string="Hello World"
+console.log(message)
+
+///Compile and Execute a TypeScript Program
+
+Let us see how to compile and execute a TypeScript program using Visual Studio Code.
+Follow the steps given below:
+
+//Step 1: Save the file with .ts extension. We shall save the file as Test.ts. The code editor
+marks errors in the code, if any, while you save it.
+
+//Step 2: Right-click the TypeScript file under the Working Files option in VS Code’s Explore
+Pane. Select Open in Command Prompt option.
+
+Step 3: To compile the file use the following command on the terminal window:
+command: tsc Test.ts
+
+Step 4: The file is compiled to Test.js. To run the program written, type the following in
+the terminal:
+command: node Test.js
+////////////////////////////////// var let and const//////////////////////////////////////////////////
+
+The let declarations follow the same syntax as var declarations. Unlike variables declared with var,
+ variables declared with let have a block-scope. This means that the scope of let variables is limited 
+ to their containing block, e.g. function, if else block or loop block. Consider the following example.
+
+let num1:number = 1; 
+    
+function letDeclaration() { 
+    let num2:number = 2; 
+
+    if (num2 > num1) { 
+        let num3: number = 3;
+        num3++; 
+    } 
+
+    while(num1 < num2) { 
+        let num4: number = 4;
+        num1++;
+    }
+
+    console.log(num1); //OK
+    console.log(num2); //OK 
+    console.log(num3); //Compiler Error: Cannot find name 'num3'
+    console.log(num4); //Compiler Error: Cannot find name 'num4'
+}
+
+letDeclaration();
+
+In the above example, all the variables are declared using let. num3 is declared in the if block so 
+its scope is limited to the if block and cannot be accessed out of the if block. In the same way, 
+num4 is declared in the while block so it cannot be accessed out of while block. Thus, when accessing
+ num3 and num4 else where will give a compiler error.
+
+
+//////////////////////////////////multiple variables with same name///////////////////////////////////////
+
+Example: Multiple Variables with the Same NameCopy
+var num:number = 1; // OK
+var Num:number = 2;// OK
+var NUM:number = 3;// OK
+var NuM:number = 4;// OK
+
+let num:number = 5;// Compiler Error: Cannot redeclared block-scoped variable 'num'
+let Num:number = 6;// Compiler Error: Cannot redeclared block-scoped variable 'Num'
+let NUM:number = 7;// Compiler Error: Cannot redeclared block-scoped variable 'NUM'
+let NuM:number = 8;// Compiler Error: Cannot redeclared block-scoped variable 'NuM'
+
+//////////////////////////////////Datatype////////////////////////////
+
+Number Types
+example: var num:number=10;
+
+String Types
+
+example: var stng:string="nike";
+		 var stng:string='nike';
+		 
+Boolean Types
+			example: var stng: boolean=true;
+
+Void Types
+
+In general, this type of data types are used in functions that do not return any value. For example,
+ function showMessage(): void { ... }. In TypeScript, you can also declare a variable of type void, 
+ but can only assign undefined or null to them.
+ We will discuss undefined and null types in the following sections.
+
+Null Types
+
+You can declare a variable of type null using the null keyword and can assign only null value to it.
+As null is a subtype of all other types, you can assign it to a number or a boolean value.
+
+var dat:null =null;
+
+Undefined Types
+You can use the undefined keyword as a data type to store the value undefined to it. As undefined is 
+a subtype of all other types, just like null, you can assign it to a number or a boolean value. 
+
+var dat:undefined=undefined;
+var dat : number = undefined;
+
+Any Types
+var dat:any =null;
+
+Array Types
+var arr: number[] =[ 12, 13 , 1, 14]
+
+Tuple Types
+
+var person : [ string , number ] = [ "john" , 45]
+
+///////////////17/11/2020///////////////////
+////////////////////////////////////////////Type Inference in TypeScript/////////////////////////
+/////meaning
+Inference = a conclusion reached on the basis of evidence and reasoning.
+
+///////////////////////////////////////////Type Assertion in TypeScript//////////////////////////
+///There are two ways to do type assertion in TypeScript:
+
+let code: any = 123; 
+let employeeCode = <number> code; 
+console.log(typeof(employeeCode)); //Output: number
+
+1. Using the angular bracket <> syntax. So far in this section, we have used angular brackets to
+ show type assertion.
+ 
+ However, there is another way to do type assertion, using the 'as' syntax.
+
+2. Using as keyword
+
+let code: any = 123; 
+let employeeCode = code as number;
+
+///////////////////////////////////////TypeScript - if else////////////////////////////////////////
+////if
+let x: number = 9, y = 21;
+
+if (x < y) 
+{
+    console.log('x is less than y');
+} 
+
+In the above example, the if condition expression x < y is evaluated to true and so it executes 
+the statement within the curly { } brackets.
+
+////////////////////if else Condition
+
+let let x: number = 10, y = 20;
+
+if (x > y) 
+{
+    console.log('x is greater than y.');
+} 
+else
+{
+    console.log('x is less than or equal to y.'); //This will be executed
+}
+
+///////////////////else if
+
+let x: number = 10, y = 20;
+
+if (x > y) 
+{
+    console.log('x is greater than y.');
+} 
+else if (x < y)
+{
+    console.log('x is less than y.'); //This will be executed
+}
+else if (x == y) 
+{
+    console.log('x is equal to y');
+}
+
+//////Ternary operator
+
+Syntax:
+Boolean expression? First statement : second statement
+
+let x: number = 10, y = 20;
+
+x > y? console.log('x is greater than y.'): console.log('x is less than or equal to y.')
+
+//////////////////////////////////////////TypeScript - switch///////////////////////////
+
+The switch statement is used to check for multiple values and executes sets of statements for 
+each of those values. A switch statement has one block of code corresponding to each value and 
+can have any number of such blocks. When the match to a value is found, the corresponding block
+ of code is executed.
+ 
+ Syntax:
+switch(expression) { 
+   case constant-expression1: { 
+      //statements; 
+      break; 
+   } 
+   case constant_expression2: { 
+      //statements; 
+      break; 
+   } 
+   default: { 
+      //statements; 
+      break; 
+   } 
+} 
+
+The following rules are applied on the switch statement:
+
+The switch statement can include constant or variable expression which can return a value of any data type.
+There can be any number of case statements within a switch. The case can include a constant or an expression.
+We must use break keyword at the end of each case block to stop the execution of the case block.
+The return type of the switch expression and case expression must match.
+The default block is optional.
+
+Consider the following example.
+
+let day : number = 4;
+
+switch (day) {
+    case 0:
+        console.log("It is a Sunday.");
+        break;
+    case 1:
+        console.log("It is a Monday.");
+        break;
+    case 2:
+        console.log("It is a Tuesday.");
+        break;
+    case 3:
+        console.log("It is a Wednesday.");
+        break;
+    case 4:
+        console.log("It is a Thursday.");
+        break;
+    case 5:
+        console.log("It is a Friday.");
+        break;
+    case 6:
+        console.log("It is a Saturday.");
+        break;
+    default:
+        console.log("No such day exists!");
+        break;
+}
+
+In the above example, we have a variable, day, of the type number. This variable has been initialized
+ with a value of 4. This value corresponds to a day of the week. A switch statement checks the value 
+ passed to it and executes the block of code corresponding to that value. This results in the code 
+ block for value 4 being executed, giving the result, 
+ 'It is a Thursday.'
+
+The switch statement can also include an expression as shown below.
+
+let x = 10, y = 5;
+
+switch (x-y) {
+    case 0:
+        console.log("Result: 0");
+        break;
+    case 5:
+        console.log("Result: 5");
+        break;
+    case 10:
+        console.log("Result: 10");
+        break;
+}
+
+////////////////////////////////////////TypeScript - for Loops////////////////////////////////////
+TypeScript - for Loops
+TypeScript supports the following for loops:
+
+1.for loop
+2.for..of loop
+3.for..in loop
+
+for Loop
+The for loop is used to execute a block of code a given number of times, which is specified 
+by a condition.
+
+Syntax:
+for (first expression; second expression; third expression ) {
+    // statements to be executed repeatedly
+}
+
+Here, the first expression is executed before the loop starts. The second expression is the condition 
+for the loop to execute. And the third expression is executed after the execution of every code block.
+
+Example: for LoopCopy
+for (let i = 0; i < 3; i++) {
+  console.log ("Block statement execution no." + i);
+}
+Result:
+Block statement execution no.0
+Block statement execution no.1
+Block statement execution no.2
+
+In the above example, the first statement let i = 0 declares and initializes a variable. The second 
+conditional statement i < 3 checks whether the value of i is less than 3 or not, and if it is then it 
+exits the loop. The third statement i++ increases the value of i by 1. Thus, the above loop will execute 
+the block three times, until the value of i becomes 3.
+
+///////////for...of Loop
+TypeScript includes the for...of loop to iterate and access elements of an array, list, or tuple 
+collection. The for...of loop returns elements from a collection e.g. array, list or tuple, and so, 
+there is no need to use the traditional for loop shown above.
+
+EX:
+let arr = [10, 20, 30, 40];
+
+for (var val of arr) {
+  console.log(val); // prints values: 10, 20, 30, 40
+}
+
+
+
+/////////for...in Loop
+Another form of the for loop is for...in. This can be used with an array, list, or tuple. The for...in 
+loop iterates through a list or collection and returns an index on each iteration.
+
+EX:
+let arr = [10, 20, 30, 40];
+
+for (var index in arr) {
+  console.log(index); // prints indexes: 0, 1, 2, 3
+
+  console.log(arr[index]); // prints elements: 10, 20, 30, 40
+}
+
+You can also use let instead of var. The difference is that the variable declared using let will not be 
+accessible out of the for..in loop, as shown below.
+
+let arr = [10, 20, 30, 40];
+
+for (var index1 in arr) {
+  console.log(index1); // prints indexes: 0, 1, 2, 3
+}
+console.log(index1); //OK, prints 3 
+
+for (let index2 in arr) {
+  console.log(index2); // prints elements: 0, 1, 2, 3
+}
+console.log(index2); //Compiler Error: Cannot find index2
+18/11/2020
+//////////////////////////////////////////TypeScript - while Loop/////////////////////////////////////////
+
+The while loop is another type of loop that checks for a specified condition before beginning to execute 
+the block of statements. The loop runs until the condition value is met.
+
+Syntax:
+while (condition expression) {
+    // code block to be executed
+}
+
+////The condition expression checks for a specified condition before running the block of code.
+
+Example: 
+////while loop
+let i: number = 2;
+
+while (i < 4) {
+    console.log( "Block statement execution no." + i )
+    i++;
+}
+Result:
+Block statement execution no.2
+Block statement execution no.3
+
+///////////////////////////////////////////do..while loop////////////////////////////////////////////////
+
+The do..while loop is similar to the while loop, except that the condition is given at the end of the loop.
+The do..while loop runs the block of code at least once before checking for the specified condition. For
+the rest of the iterations, it runs the block of code only if the specified condition is met.
+
+Syntax:
+do {
+// code block to be executed
+}
+while (condition expression);
+
+Example: 
+////do..while loop
+let i: number = 2;
+do {
+    console.log("Block statement execution no." + i )
+    i++;
+} while ( i < 4)
+Result:
+Block statement execution no.2
+Block statement execution no.3
+
+//////////////////////////////////////////////TypeScript - Functions/////////////////////////////////////
+
+//In TypeScript, functions can be of two types: 1.named and 2.anonymous.
+
+Named Functions:
+A named function is one where you declare and call a function by its given name.
+
+Example: 
+Named Function
+function display() {
+
+    console.log("Hello TypeScript!");
+}
+
+display(); //Output: Hello TypeScript 
+
+////Functions can also include parameter types and return type.
+
+Example: Function with Parameter and Return Types
+
+function Sum(x: number, y: number) : number {
+    return x + y;
+}
+
+Sum(2,3); // returns 5
+
+/////Anonymous Function
+An anonymous function is one which is defined as an expression. This expression is stored in a variable.
+So, the function itself does not have a name. These functions are invoked using the variable name that
+the function is stored in.
+ 
+ 
+Example: 
+////Anonymous Function
+
+let greeting = function() {
+    console.log("Hello TypeScript!");
+};
+
+greeting(); //Output: Hello TypeScript! 
+ 
+///////////////An anonymous function can also include parameter types and return type.
+
+Example: 
+////Function with Paramter and Return Types
+
+let Sum = function(x: number, y: number) : number
+{
+    return x + y;
+}
+
+Sum(2,3); // returns 5
+ 
+ 
+ ////////////////////////////////////////////Optional Parameters/////////////////////////////////////////
+ 
+ Optional Parameters
+TypeScript has an optional parameter functionality. The parameters that may or may not receive a value can be appended with a '?' to mark them as optional.
+
+ Note:
+All optional parameters must follow required parameters and should be at the end.
+ 
+ Example:
+ Optional Parameter
+function Greet(greeting: string, name?: string ) : string {
+    return greeting + ' ' + name + '!';
+}
+
+Greet('Hello','Steve');//OK, returns "Hello Steve!"
+Greet('Hi'); // OK, returns "Hi undefined!".
+Greet('Hi','Bill','Gates'); //Compiler Error: Expected 2 arguments, but got 3.
+ 
+///////////////////////////////////////////Default Parameters/////////////////////////////////////////////
+
+TypeScript provides the option to add default values to parameters. So, if the user does not provide a 
+value to an argument, TypeScript will initialize the parameter with the default value. Default parameters
+have the same behaviour as optional parameters. If a value is not passed for the default parameter in a
+function call, the default parameter must follow the required parameters in the function signature. 
+Hence, default parameters can be omitted while calling a function. However, if a function signature
+has a default parameter before a required parameter, the function can still be called, provided the
+default parameter is passed a value of undefined.
+ 
+Example: 
+ Default Parameter
+function Greet(name: string, greeting: string = "Hello") : string {
+    return greeting + ' ' + name + '!';
+}
+
+Greet('Steve');//OK, returns "Hello Steve!"
+Greet('Steve', 'Hi'); // OK, returns "Hi Steve!".
+Greet('Bill'); //OK, returns "Hello Bill!"
+ 
+///When the default parameters precede required parameters in a function, they can be called by passing 
+undefined.
+
+Example: 
+Function Call
+function Greet(greeting: string = "Hello", name: string) : string {
+    return greeting + ' ' + name + '!';
+}
+
+Greet(undefined, 'Steve');//returns "Hello Steve!"
+Greet("Hi", 'Steve'); //returns "Hi Steve!".
+Greet(undefined, 'Bill'); //returns "Hello Bill!"
+
+/////////////////////////////////////////TypeScript - Arrow Functions/////////////////////////////////
+
+Example: 
+Fat Arrow Function
+let sum = (x: number, y: number): number => {
+    return x + y;
+}
+
+sum(10, 20); //returns 30
+
+////The above arrow function sum will be converted into the following JavaScript code.
+
+var sum = function (x, y) {
+    return x + y;
+}
+
+The following is an arrow function without parameters.
+
+Example: Parameterless Arrow Function
+let Print = () => console.log("Hello TypeScript");
+
+Print(); //Output: Hello TypeScript
+
+Furthermore, if the function body consists of only one statement then no need for the curly brackets and 
+the return keyword, as shown below.
+
+let sum = (x: number, y: number) => x + y;
+
+sum(3, 4); //returns 7
+
+///////////////////////////////////////////TypeScript - Interfaces////////////////////////////////////////
+
+Interface is a structure that defines the contract in your application. It defines the syntax for classes
+to follow. Classes that are derived from an interface must follow the structure provided by their 
+interface.
+
+The TypeScript compiler does not convert interface to JavaScript. It uses interface for type checking. 
+This is also known as "duck typing" or "structural subtyping".
+
+An interface is defined with the keyword interface and it can include properties and method declarations 
+using a function or an arrow function.
+
+
+Example: Interface
+
+interface IEmployee {
+    empCode: number;
+    empName: string;
+    getSalary: (number) => number; // arrow function
+    getManagerName(number): string; 
+}
+
+In the above example, the IEmployee interface includes two properties empCode and empName. It also include
+s a method declaration getSalaray using an arrow function which includes one number parameter and a number
+return type. The getManagerName method is declared using a normal function. This means that any object of
+type IEmployee must define the two properties and two methods.
+ 
+/////////////////////////////////////////Interface as Type///////////////////////////////////////////////
+
+Interface in TypeScript can be used to define a type and also to implement it in the class.
+
+The following interface IEmployee defines a type of a variable.
+
+Example: Interface as Type
+interface KeyPair {
+    key: number;
+    value: string;
+}
+
+let kv1: KeyPair = { key:1, value:"Steve" }; // OK
+
+let kv2: KeyPair = { key:1, val:"Steve" }; // Compiler Error: 'val' doesn't exist in type 'KeyPair'
+
+let kv3: KeyPair = { key:1, value:100 }; // Compiler Error: 
+
+In the above example, an interface KeyPair includes two properties key and value. A variable kv1 is 
+declared as KeyPair type. So, it must follow the same structure as KeyPair. It means only an object 
+with properties key of number type and value of string type can be assigned to a variable kv1. The 
+TypeScript compiler will show an error if there is any change in the name of the properties or the 
+data type is different than KeyPair. Another variable kv2 is also declared as KeyPair type but the 
+assigned value is val instead of value, so this will cause an error. In the same way, kv3 assigns a 
+number to the value property, so the compiler will show an error. Thus, TypeScript uses an interface 
+to ensure the proper structure of an object. 
+
+/////////////////////////////////////////Interface as Function Type/////////////////////////////////////
+
+TypeScript interface is also used to define a type of a function. This ensures the function signature.
+
+Example: Function Type
+
+interface KeyValueProcessor
+{
+    (key: number, value: string): void;
+};
+
+function addKeyValue(key:number, value:string):void { 
+    console.log('addKeyValue: key = ' + key + ', value = ' + value)
+}
+
+function updateKeyValue(key: number, value:string):void { 
+    console.log('updateKeyValue: key = '+ key + ', value = ' + value)
+}
+    
+let kvp: KeyValueProcessor = addKeyValue;
+kvp(1, 'Bill'); //Output: addKeyValue: key = 1, value = Bill 
+
+kvp = updateKeyValue;
+kvp(2, 'Steve'); //Output: updateKeyValue: key = 2, value = Steve 
+
+In the above example, an interface KeyValueProcessor includes a method signature. This defines the 
+function type. Now, we can define a variable of type KeyValueProcessor which can only point to functions 
+with the same signature as defined in the KeyValueProcessor interface. So, addKeyValue or updateKeyValue 
+function is assigned to kvp. So, kvp can be called like a function.
+
+///Trying to assign a function with a different signature will cause an error.
+
+function delete(key:number):void { 
+    console.log('Key deleted.')
+}
+    
+let kvp: KeyValueProcessor = delete; //Compiler Error
